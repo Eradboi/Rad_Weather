@@ -1,0 +1,68 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Rad Weather | Login{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: rgb(209, 209, 249);
+        }
+        form{
+            margin-left: 400px;
+            margin-right: 400px;
+        }
+        a {
+         
+         text-decoration: none;
+        }
+        h1 {
+            margin-top: 10px;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 300%;
+            color: black;
+        } 
+        .google{
+            color: white;
+            text-align: center;
+        }
+        .row{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="{% static 'img/Rad Weather Logo.png' %}" alt="Logo" width="60" height="56" class="d-inline-block align-text-center">   Login</h1>
+
+    
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            
+            <button type="submit" class="btn btn-dark">Login</button>
+            <p>Don't have an account? Create one <a href="/register">here</a></p>
+            <p>Forgot Password? Recover <a href="{% url "password_reset" %}">here</a></p>
+        </form>
+        <div class="row">
+            <div class="col -md-8 mx-auto social-container my-2 order-md-1">
+                <button class="btn btn-primary mb-2">
+                    <a class='google' href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+                </button>
+            </div>
+        </div>
+        
+
+ 
+    {% endblock %}
+    
+</body>
+</html>

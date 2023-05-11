@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}RW Login{% endblock %}</title>
+    {% load crispy_forms_tags %}
+    {% block content %}
+  
+    <style>
+        body {
+            background-color: rgb(209, 209, 249);
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {{form.as_p}}
+
+    </form>
+    <button type="submit" class="btn btn-dark"> Login</button>
+    <p>Don't have an account? Create one <a href="/register">here</a></p>
+</body>
+{% endblock %}
+</html>
